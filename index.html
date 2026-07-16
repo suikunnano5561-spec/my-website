@@ -3,49 +3,43 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Vertical Brand Hero</title>
+<title>Vertical Brand Scroll</title>
 
 <style>
   body {
     margin: 0;
+    height: 300vh; /* ← スクロール量を確保 */
     font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
-    background: radial-gradient(circle at top,
+    background: linear-gradient(
+      180deg,
       #e9fbff 0%,
-      #cfeff7 50%,
-      #a6d9e6 100%);
+      #cfeff7 40%,
+      #a6d9e6 100%
+    );
     overflow-x: hidden;
   }
 
-  .spacer {
-    height: 120vh;
-  }
-
-  .hero {
-    position: sticky;
-    top: 0;
-    height: 100vh;
-    display: flex;
-    align-items: center;
-    pointer-events: none;
-  }
-
-  /* 縦組み文字 */
+  /* 縦文字 */
   .vertical-text {
+    position: fixed;
+    left: -6vw;
     writing-mode: vertical-rl;
-    font-size: 20vw;
+    font-size: 22vw;
     font-weight: 700;
     letter-spacing: 0.15em;
     color: #49b5c9;
     line-height: 1;
-    margin-left: -8vw; /* はみ出させる */
-    transform: translateY(0);
+    pointer-events: none;
+    transform: translateY(120vh);
     will-change: transform;
   }
 
-  /* 仮の画像枠 */
+  /* 仮の画像（あとで差し替え） */
   .image-layer {
-    position: absolute;
-    right: 10vw;
+    position: fixed;
+    right: 8vw;
+    top: 50%;
+    transform: translateY(-50%);
     width: 55vw;
     max-width: 420px;
     aspect-ratio: 3 / 4;
@@ -61,28 +55,25 @@
 
 <body>
 
-<div class="spacer"></div>
+<div class="vertical-text" id="vtext">
+  安全性第1むじなグループ
+</div>
 
-<section class="hero">
-  <div class="vertical-text" id="vtext">
-    安全性第1むじなグループ
-  </div>
-
-  <div class="image-layer"></div>
-</section>
-
-<div class="spacer"></div>
+<div class="image-layer"></div>
 
 <script>
   const vtext = document.getElementById("vtext");
 
   window.addEventListener("scroll", () => {
-    const max = document.body.scrollHeight - innerHeight;
-    const progress = scrollY / max;
-    const move = progress * 100; // 上に流す量
+    const scrollMax =
+      document.body.scrollHeight - window.innerHeight;
+    const progress = window.scrollY / scrollMax;
 
-    vtext.style.transform =
-      `translateY(-${move}vh)`;
+    const start = 120;  // 画面下スタート
+    const end = -180;   // 画面上に抜ける
+    const y = start + (end - start) * progress;
+
+    vtext.style.transform = `translateY(${y}vh)`;
   });
 </script>
 
