@@ -3,41 +3,44 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Hero Scroll</title>
+<title>Scroll Hero</title>
 
 <style>
   body {
     margin: 0;
-    background: #f7f7f7;
     font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
-    overflow-x: hidden;
+    background: #fafafa;
   }
 
-  /* 画面全体のヒーロー */
+  /* スクロール用の長いエリア */
+  .spacer {
+    height: 200vh;
+  }
+
+  /* ヒーロー固定エリア */
   .hero {
+    position: sticky;
+    top: 0;
     height: 100vh;
+    overflow: hidden;
     display: flex;
     align-items: center;
-    overflow: hidden;
-    position: relative;
+    background: #fafafa;
   }
 
-  /* 横に流れるトラック */
   .track {
     display: flex;
     white-space: nowrap;
-    animation: slide 60s linear infinite;
+    transition: transform 0.1s linear;
   }
 
-  /* テキストブロック */
   .block {
     display: flex;
     align-items: center;
-    padding-right: 8vw;
+    padding-right: 10vw;
   }
 
-  /* メインコピー */
-  .main-text {
+  .main {
     font-size: 18vw;
     font-weight: 700;
     letter-spacing: 0.08em;
@@ -45,8 +48,7 @@
     line-height: 1;
   }
 
-  /* サブコピー */
-  .sub-text {
+  .sub {
     font-size: 4vw;
     margin-left: 2vw;
     color: #666;
@@ -54,51 +56,49 @@
     white-space: nowrap;
   }
 
-  /* アニメーション */
-  @keyframes slide {
-    from {
-      transform: translateX(0);
-    }
-    to {
-      transform: translateX(-50%);
-    }
-  }
-
-  /* スマホ対応 */
   @media (max-width: 768px) {
-    .main-text {
-      font-size: 26vw;
-    }
-    .sub-text {
-      font-size: 6vw;
-      margin-left: 3vw;
-    }
+    .main { font-size: 26vw; }
+    .sub  { font-size: 6vw; }
   }
 </style>
 </head>
 
 <body>
 
+<div class="spacer"></div>
+
 <section class="hero">
-  <div class="track">
-
+  <div class="track" id="track">
     <div class="block">
-      <div class="main-text">安全性を第1に</div>
-      <div class="sub-text">むじなグループ</div>
+      <div class="main">安全性を第1に</div>
+      <div class="sub">むじなグループ</div>
     </div>
-
     <div class="block">
-      <div class="main-text">安全性を第1に</div>
-      <div class="sub-text">むじなグループ</div>
+      <div class="main">安全性を第1に</div>
+      <div class="sub">むじなグループ</div>
     </div>
-
     <div class="block">
-      <div class="main-text">安全性を第1に</div>
-      <div class="sub-text">むじなグループ</div>
+      <div class="main">安全性を第1に</div>
+      <div class="sub">むじなグループ</div>
     </div>
-
   </div>
 </section>
+
+<div class="spacer"></div>
+
+<script>
+  const track = document.getElementById("track");
+
+  window.addEventListener("scroll", () => {
+    const scrollY = window.scrollY;
+    const maxScroll = document.body.scrollHeight - window.innerHeight;
+
+    const progress = scrollY / maxScroll;
+    const move = progress * 50; // ← 横移動量（調整OK）
+
+    track.style.transform = `translateX(-${move}%)`;
+  });
+</script>
 
 </body>
 </html>
