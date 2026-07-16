@@ -1,71 +1,104 @@
 <!DOCTYPE html>
 <html lang="ja">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Scrolling Hero</title>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Hero Scroll</title>
 
-  <style>
-    body {
-      margin: 0;
-      background: #f3f3f3;
-      overflow-x: hidden;
-      font-family: Arial, sans-serif;
-    }
+<style>
+  body {
+    margin: 0;
+    background: #f7f7f7;
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+    overflow-x: hidden;
+  }
 
-    /* 画面全体 */
-    .hero {
-      height: 100vh;
-      display: flex;
-      align-items: center;
-      position: relative;
-      overflow: hidden;
-    }
+  /* 画面全体のヒーロー */
+  .hero {
+    height: 100vh;
+    display: flex;
+    align-items: center;
+    overflow: hidden;
+    position: relative;
+  }
 
-    /* 流れるエリア */
-    .scroll-wrapper {
-      display: flex;
-      white-space: nowrap;
-      animation: scroll-left 25s linear infinite;
-    }
+  /* 横に流れるトラック */
+  .track {
+    display: flex;
+    white-space: nowrap;
+    animation: slide 60s linear infinite;
+  }
 
-    /* 巨大文字 */
-    .scroll-text {
-      font-size: 18vw;
-      font-weight: 900;
-      color: #56b6c2;
-      padding-right: 5vw;
-    }
+  /* テキストブロック */
+  .block {
+    display: flex;
+    align-items: center;
+    padding-right: 8vw;
+  }
 
-    /* 左へ流すアニメーション */
-    @keyframes scroll-left {
-      0% {
-        transform: translateX(0%);
-      }
-      100% {
-        transform: translateX(-50%);
-      }
-    }
+  /* メインコピー */
+  .main-text {
+    font-size: 18vw;
+    font-weight: 700;
+    letter-spacing: 0.08em;
+    color: #4fb3c8;
+    line-height: 1;
+  }
 
-    /* スマホ調整 */
-    @media (max-width: 600px) {
-      .scroll-text {
-        font-size: 24vw;
-      }
+  /* サブコピー */
+  .sub-text {
+    font-size: 4vw;
+    margin-left: 2vw;
+    color: #666;
+    letter-spacing: 0.2em;
+    white-space: nowrap;
+  }
+
+  /* アニメーション */
+  @keyframes slide {
+    from {
+      transform: translateX(0);
     }
-  </style>
+    to {
+      transform: translateX(-50%);
+    }
+  }
+
+  /* スマホ対応 */
+  @media (max-width: 768px) {
+    .main-text {
+      font-size: 26vw;
+    }
+    .sub-text {
+      font-size: 6vw;
+      margin-left: 3vw;
+    }
+  }
+</style>
 </head>
 
 <body>
 
-  <section class="hero">
-    <div class="scroll-wrapper">
-      <div class="scroll-text">SAMPLE TEXT</div>
-      <div class="scroll-text">SAMPLE TEXT</div>
-      <div class="scroll-text">SAMPLE TEXT</div>
-      <div class="scroll-text">SAMPLE TEXT</div>
+<section class="hero">
+  <div class="track">
+
+    <div class="block">
+      <div class="main-text">安全性を第1に</div>
+      <div class="sub-text">むじなグループ</div>
     </div>
-  </section>
+
+    <div class="block">
+      <div class="main-text">安全性を第1に</div>
+      <div class="sub-text">むじなグループ</div>
+    </div>
+
+    <div class="block">
+      <div class="main-text">安全性を第1に</div>
+      <div class="sub-text">むじなグループ</div>
+    </div>
+
+  </div>
+</section>
 
 </body>
 </html>
