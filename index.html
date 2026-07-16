@@ -3,78 +3,58 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Vertical Brand Scroll</title>
+<title>Vertical Brand Hero</title>
 
 <style>
   body {
     margin: 0;
     font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
-    background: linear-gradient(
-      180deg,
-      #e6f9ff 0%,
-      #c8eef7 40%,
-      #a8dcea 100%
-    );
-    color: #1a1a1a;
+    background: radial-gradient(circle at top,
+      #e9fbff 0%,
+      #cfeff7 50%,
+      #a6d9e6 100%);
+    overflow-x: hidden;
   }
 
-  /* スクロール余白 */
   .spacer {
     height: 120vh;
   }
 
-  /* メイン表示エリア */
   .hero {
-    height: 100vh;
     position: sticky;
     top: 0;
-    overflow: hidden;
+    height: 100vh;
     display: flex;
     align-items: center;
-    justify-content: center;
+    pointer-events: none;
   }
 
-  /* 縦に流れるレイヤー */
-  .vertical {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    gap: 40vh;
+  /* 縦組み文字 */
+  .vertical-text {
+    writing-mode: vertical-rl;
+    font-size: 20vw;
+    font-weight: 700;
+    letter-spacing: 0.15em;
+    color: #49b5c9;
+    line-height: 1;
+    margin-left: -8vw; /* はみ出させる */
     transform: translateY(0);
     will-change: transform;
   }
 
-  /* 大きなコピー */
-  .main-text {
-    font-size: 18vw;
-    font-weight: 700;
-    letter-spacing: 0.15em;
-    color: #4fb3c8;
-    text-align: center;
-    line-height: 1;
-    white-space: nowrap;
-  }
-
-  /* 仮画像（あとで差し替え） */
-  .image-placeholder {
-    width: 70vw;
-    max-width: 400px;
-    height: 60vw;
-    max-height: 400px;
+  /* 仮の画像枠 */
+  .image-layer {
+    position: absolute;
+    right: 10vw;
+    width: 55vw;
+    max-width: 420px;
+    aspect-ratio: 3 / 4;
     border-radius: 20px;
-    background: radial-gradient(
-      circle at top,
-      rgba(255,255,255,0.8),
-      rgba(79,179,200,0.4)
+    background: linear-gradient(
+      135deg,
+      rgba(255,255,255,0.9),
+      rgba(255,255,255,0.4)
     );
-    backdrop-filter: blur(4px);
-  }
-
-  /* スマホ最適化 */
-  @media (max-width: 768px) {
-    .main-text {
-      font-size: 28vw;
-    }
   }
 </style>
 </head>
@@ -84,27 +64,24 @@
 <div class="spacer"></div>
 
 <section class="hero">
-  <div class="vertical" id="vertical">
-    <div class="main-text">安全性第1<br>むじなグループ</div>
-    <div class="image-placeholder"></div>
-    <div class="main-text">安全性第1<br>むじなグループ</div>
+  <div class="vertical-text" id="vtext">
+    安全性第1むじなグループ
   </div>
+
+  <div class="image-layer"></div>
 </section>
 
 <div class="spacer"></div>
 
 <script>
-  const vertical = document.getElementById("vertical");
+  const vtext = document.getElementById("vtext");
 
   window.addEventListener("scroll", () => {
-    const scrollY = window.scrollY;
-    const maxScroll =
-      document.body.scrollHeight - window.innerHeight;
+    const max = document.body.scrollHeight - innerHeight;
+    const progress = scrollY / max;
+    const move = progress * 100; // 上に流す量
 
-    const progress = scrollY / maxScroll;
-    const move = progress * 120; // 縦移動量
-
-    vertical.style.transform =
+    vtext.style.transform =
       `translateY(-${move}vh)`;
   });
 </script>
