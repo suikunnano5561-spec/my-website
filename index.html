@@ -2,34 +2,42 @@
 <html lang="ja">
 <head>
   <meta charset="UTF-8">
-  <title>荒野行動 アカウント情報</title>
+  <title>荒野行動 アカウント販売</title>
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <style>
     body {
       margin: 0;
-      font-family: Arial, sans-serif;
-      background: linear-gradient(180deg, #0b0b0b, #1a1a1a);
+      font-family: "Segoe UI", Arial, sans-serif;
+      background: #0f0f0f;
       color: #fff;
+      line-height: 1.6;
       text-align: center;
     }
     header {
-      padding: 60px 20px;
+      padding: 60px 20px 40px;
+      background: linear-gradient(180deg, #111, #1a1a1a);
     }
     header h1 {
+      margin: 0;
+      font-size: 2.3em;
       color: #f5c542;
-      font-size: 2.2em;
+    }
+    header p {
+      margin-top: 10px;
+      color: #ccc;
     }
     section {
       max-width: 900px;
       margin: 30px auto;
-      padding: 20px;
-      background: #141414;
+      padding: 25px;
+      background: #181818;
       border-radius: 10px;
     }
     h2 {
       color: #f5c542;
       border-bottom: 1px solid #333;
-      padding-bottom: 10px;
+      padding-bottom: 8px;
+      margin-bottom: 20px;
     }
     ul {
       list-style: none;
@@ -39,20 +47,31 @@
       padding: 8px 0;
       border-bottom: 1px solid #222;
     }
-    .status {
+    .cards {
       display: grid;
       grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
       gap: 15px;
     }
     .card {
-      background: #1f1f1f;
+      background: #202020;
       padding: 15px;
       border-radius: 8px;
     }
+    .line-button {
+      display: inline-block;
+      margin-top: 20px;
+      padding: 16px 28px;
+      background: #00c300;
+      color: #fff;
+      font-weight: bold;
+      border-radius: 10px;
+      text-decoration: none;
+      font-size: 1.1em;
+    }
     footer {
-      padding: 30px;
-      font-size: 0.9em;
-      color: #aaa;
+      margin: 40px 0 30px;
+      font-size: 0.85em;
+      color: #888;
     }
   </style>
 </head>
@@ -60,68 +79,49 @@
 <body>
 
 <header>
-  <h1>荒野行動 アカウント情報</h1>
-  <p>運営許可取得済み / 正規取引</p>
+  <h1>荒野行動 アカウント販売</h1>
+  <p>詳細は下記をご確認ください</p>
 </header>
 
 <section>
   <h2>アカウント概要</h2>
   <ul>
     <li>サーバー：JP</li>
-    <li>プレイ歴：長期</li>
-    <li>連携状況：未連携</li>
+    <li>プレイ状況：進行済み</li>
+    <li>引き継ぎ形式：ご相談ください</li>
   </ul>
 </section>
 
 <section>
   <h2>ステータス</h2>
-  <div class="status">
+  <div class="cards">
     <div class="card">レベル：高</div>
-    <div class="card">限定スキン：多数</div>
-    <div class="card">ガチャ履歴：良好</div>
-    <div class="card">BAN履歴：なし</div>
+    <div class="card">スキン：複数所持</div>
+    <div class="card">称号・実績：あり</div>
+    <div class="card">状態：良好</div>
   </div>
 </section>
 
 <section>
-  <h2>取引の流れ</h2>
-  <ol style="text-align:left;">
-    <li>事前問い合わせ</li>
-    <li>詳細説明・確認</li>
-    <li>合意後に取引</li>
-    <li>受け渡し完了</li>
-  </ol>
-</section>
-
-<section>
-  <h2>注意事項</h2>
+  <h2>取引について</h2>
   <ul>
-    <li>トラブル防止のため事前確認必須</li>
-    <li>取引後の返金不可</li>
-    <li>運営規約を遵守</li>
+    <li>事前に内容確認をお願いします</li>
+    <li>詳細はメッセージでご説明します</li>
+    <li>条件に納得いただいた上で進行します</li>
   </ul>
 </section>
 
-<<section>
+<section>
   <h2>お問い合わせ</h2>
-  <p>取引・ご質問は公式LINEよりお願いいたします。</p>
+  <p>ご質問・取引のご連絡は公式LINEよりお願いいたします。</p>
 
-  <a href="https://lin.ee/XRr7Gpb" target="_blank"
-     style="display:inline-block;
-            margin-top:15px;
-            padding:15px 25px;
-            background:#00c300;
-            color:#fff;
-            font-weight:bold;
-            border-radius:8px;
-            text-decoration:none;">
+  <a href="https://lin.ee/XRr7Gpb" target="_blank" class="line-button">
     💬 公式LINEで問い合わせる
   </a>
 </section>
-  
 
 <footer>
-  © 2026 Account Info Site
+  © Account Sales Page
 </footer>
 
 </body>
