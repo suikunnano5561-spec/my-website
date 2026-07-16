@@ -3,62 +3,78 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Scroll Hero</title>
+<title>Vertical Brand Scroll</title>
 
 <style>
   body {
     margin: 0;
     font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
-    background: #fafafa;
+    background: linear-gradient(
+      180deg,
+      #e6f9ff 0%,
+      #c8eef7 40%,
+      #a8dcea 100%
+    );
+    color: #1a1a1a;
   }
 
-  /* スクロール用の長いエリア */
+  /* スクロール余白 */
   .spacer {
-    height: 200vh;
+    height: 120vh;
   }
 
-  /* ヒーロー固定エリア */
+  /* メイン表示エリア */
   .hero {
+    height: 100vh;
     position: sticky;
     top: 0;
-    height: 100vh;
     overflow: hidden;
     display: flex;
     align-items: center;
-    background: #fafafa;
+    justify-content: center;
   }
 
-  .track {
+  /* 縦に流れるレイヤー */
+  .vertical {
     display: flex;
-    white-space: nowrap;
-    transition: transform 0.1s linear;
-  }
-
-  .block {
-    display: flex;
+    flex-direction: column;
     align-items: center;
-    padding-right: 10vw;
+    gap: 40vh;
+    transform: translateY(0);
+    will-change: transform;
   }
 
-  .main {
+  /* 大きなコピー */
+  .main-text {
     font-size: 18vw;
     font-weight: 700;
-    letter-spacing: 0.08em;
+    letter-spacing: 0.15em;
     color: #4fb3c8;
+    text-align: center;
     line-height: 1;
-  }
-
-  .sub {
-    font-size: 4vw;
-    margin-left: 2vw;
-    color: #666;
-    letter-spacing: 0.2em;
     white-space: nowrap;
   }
 
+  /* 仮画像（あとで差し替え） */
+  .image-placeholder {
+    width: 70vw;
+    max-width: 400px;
+    height: 60vw;
+    max-height: 400px;
+    border-radius: 20px;
+    background: radial-gradient(
+      circle at top,
+      rgba(255,255,255,0.8),
+      rgba(79,179,200,0.4)
+    );
+    backdrop-filter: blur(4px);
+  }
+
+  /* スマホ最適化 */
   @media (max-width: 768px) {
-    .main { font-size: 26vw; }
-    .sub  { font-size: 6vw; }
+    .main-text {
+      font-size: 28vw;
+    }
   }
 </style>
 </head>
@@ -68,35 +84,28 @@
 <div class="spacer"></div>
 
 <section class="hero">
-  <div class="track" id="track">
-    <div class="block">
-      <div class="main">安全性を第1に</div>
-      <div class="sub">むじなグループ</div>
-    </div>
-    <div class="block">
-      <div class="main">安全性を第1に</div>
-      <div class="sub">むじなグループ</div>
-    </div>
-    <div class="block">
-      <div class="main">安全性を第1に</div>
-      <div class="sub">むじなグループ</div>
-    </div>
+  <div class="vertical" id="vertical">
+    <div class="main-text">安全性第1<br>むじなグループ</div>
+    <div class="image-placeholder"></div>
+    <div class="main-text">安全性第1<br>むじなグループ</div>
   </div>
 </section>
 
 <div class="spacer"></div>
 
 <script>
-  const track = document.getElementById("track");
+  const vertical = document.getElementById("vertical");
 
   window.addEventListener("scroll", () => {
     const scrollY = window.scrollY;
-    const maxScroll = document.body.scrollHeight - window.innerHeight;
+    const maxScroll =
+      document.body.scrollHeight - window.innerHeight;
 
     const progress = scrollY / maxScroll;
-    const move = progress * 50; // ← 横移動量（調整OK）
+    const move = progress * 120; // 縦移動量
 
-    track.style.transform = `translateX(-${move}%)`;
+    vertical.style.transform =
+      `translateY(-${move}vh)`;
   });
 </script>
 
