@@ -8,19 +8,42 @@
 
 <style>
 
-body{
+*{
     margin:0;
-    min-height:500vh;
-    overflow-x:hidden;
-
-    background:linear-gradient(
-        180deg,
-        #eefcff 0%,
-        #d8f3fb 50%,
-        #b7e1ec 100%
-    );
+    padding:0;
+    box-sizing:border-box;
 }
 
+body{
+    min-height:500vh;
+    overflow-x:hidden;
+}
+
+/* 背景動画 */
+#bg-video{
+    position:fixed;
+    top:0;
+    left:0;
+
+    width:100%;
+    height:100%;
+
+    object-fit:cover;
+
+    z-index:-2;
+}
+
+/* 薄い水色フィルター */
+.overlay{
+    position:fixed;
+    inset:0;
+
+    background:rgba(180,230,240,0.18);
+
+    z-index:-1;
+}
+
+/* 流れる文字エリア */
 .marquee{
     position:absolute;
     inset:0;
@@ -30,37 +53,40 @@ body{
 .text{
     position:absolute;
 
-    left:20px;
+    left:15px;
 
     writing-mode:vertical-rl;
+
     white-space:nowrap;
 
     font-size:15vw;
+
     font-weight:700;
 
-    color:rgba(77,188,209,.85);
+    color:rgba(255,255,255,0.9);
 
-    text-shadow:0 0 20px rgba(255,255,255,.5);
+    text-shadow:
+        0 0 20px rgba(0,0,0,0.25),
+        0 0 40px rgba(255,255,255,0.3);
 
     animation:up 28s linear infinite;
 }
 
-/* 1本目 */
 .text:nth-child(1){
     top:100vh;
 }
 
-/* 2本目 */
 .text:nth-child(2){
     top:280vh;
 }
 
-/* 3本目 */
 .text:nth-child(3){
     top:460vh;
 }
 
+/* 上へ流れる */
 @keyframes up{
+
     from{
         transform:translateY(0);
     }
@@ -68,12 +94,18 @@ body{
     to{
         transform:translateY(-520vh);
     }
+
 }
 
 </style>
 </head>
-
 <body>
+
+<video autoplay muted loop playsinline id="bg-video">
+    805983194.841036.mp4
+</video>
+
+<div class="overlay"></div>
 
 <div class="marquee">
 
