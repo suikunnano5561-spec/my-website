@@ -2,79 +2,118 @@
 <html lang="ja">
 <head>
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Vertical Brand Scroll</title>
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>むじなグループ</title>
 
 <style>
-  body {
-    margin: 0;
-    height: 300vh; /* ← スクロール量を確保 */
-    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
-    background: linear-gradient(
-      180deg,
-      #e9fbff 0%,
-      #cfeff7 40%,
-      #a6d9e6 100%
-    );
-    overflow-x: hidden;
-  }
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+}
 
-  /* 縦文字 */
-  .vertical-text {
-    position: fixed;
-    left: -6vw;
-    writing-mode: vertical-rl;
-    font-size: 22vw;
-    font-weight: 700;
-    letter-spacing: 0.15em;
-    color: #49b5c9;
-    line-height: 1;
-    pointer-events: none;
-    transform: translateY(120vh);
-    will-change: transform;
-  }
+body{
+    height:500vh;
+    overflow-x:hidden;
+    background:#dff7ff;
+    font-family:"Yu Gothic",sans-serif;
+}
 
-  /* 仮の画像（あとで差し替え） */
-  .image-layer {
-    position: fixed;
-    right: 8vw;
-    top: 50%;
-    transform: translateY(-50%);
-    width: 55vw;
-    max-width: 420px;
-    aspect-ratio: 3 / 4;
-    border-radius: 20px;
-    background: linear-gradient(
-      135deg,
-      rgba(255,255,255,0.9),
-      rgba(255,255,255,0.4)
-    );
-  }
+/* 背景 */
+.bg{
+    position:fixed;
+    inset:0;
+    background:url("background.jpg") center/cover no-repeat;
+    z-index:-2;
+}
+
+/* 白いフィルター */
+.overlay{
+    position:fixed;
+    inset:0;
+    background:rgba(255,255,255,.18);
+    backdrop-filter:blur(2px);
+    z-index:-1;
+}
+
+/* 縦文字 */
+.brand{
+    position:fixed;
+    left:-5vw;
+    top:110vh;
+
+    writing-mode:vertical-rl;
+
+    font-size:18vw;
+    font-weight:900;
+    color:#33a8c8;
+
+    letter-spacing:.15em;
+    line-height:1;
+
+    opacity:.18;
+
+    user-select:none;
+    pointer-events:none;
+
+    transition:transform .05s linear;
+}
+
+/* メイン画像 */
+.main-image{
+    position:fixed;
+    right:8vw;
+    top:50%;
+    transform:translateY(-50%);
+    width:min(34vw,430px);
+
+    border-radius:20px;
+    overflow:hidden;
+
+    box-shadow:0 30px 60px rgba(0,0,0,.25);
+}
+
+.main-image img{
+    width:100%;
+    display:block;
+}
 </style>
 </head>
 
 <body>
 
-<div class="vertical-text" id="vtext">
-  安全性第1むじなグループ
+<div class="bg"></div>
+<div class="overlay"></div>
+
+<div class="brand" id="brand">
+安全性第1
+むじなグループ
 </div>
 
-<div class="image-layer"></div>
+<div class="main-image" id="image">
+<img src="logo.png">
+</div>
 
 <script>
-  const vtext = document.getElementById("vtext");
 
-  window.addEventListener("scroll", () => {
-    const scrollMax =
-      document.body.scrollHeight - window.innerHeight;
-    const progress = window.scrollY / scrollMax;
+const brand=document.getElementById("brand");
+const image=document.getElementById("image");
 
-    const start = 120;  // 画面下スタート
-    const end = -180;   // 画面上に抜ける
-    const y = start + (end - start) * progress;
+window.addEventListener("scroll",()=>{
 
-    vtext.style.transform = `translateY(${y}vh)`;
-  });
+const max=document.body.scrollHeight-innerHeight;
+const p=scrollY/max;
+
+//縦文字
+const y=110-220*p;
+brand.style.transform=`translateY(${y}vh)`;
+
+//画像
+image.style.transform=
+`translateY(calc(-50% + ${p*80}px))`;
+
+});
+
 </script>
 
 </body>
