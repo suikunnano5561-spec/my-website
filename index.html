@@ -1,120 +1,36 @@
-<!DOCTYPE html>
-<html lang="ja">
-<head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width,initial-scale=1">
-<title>むじなグループ</title>
-
-<style>
-*{
-    margin:0;
-    padding:0;
-    box-sizing:border-box;
-}
-
-body{
-    height:500vh;
-    overflow-x:hidden;
-    background:#dff7ff;
-    font-family:"Yu Gothic",sans-serif;
-}
-
-/* 背景 */
-.bg{
-    position:fixed;
-    inset:0;
-    background:url("background.jpg") center/cover no-repeat;
-    z-index:-2;
-}
-
-/* 白いフィルター */
-.overlay{
-    position:fixed;
-    inset:0;
-    background:rgba(255,255,255,.18);
-    backdrop-filter:blur(2px);
-    z-index:-1;
-}
-
-/* 縦文字 */
 .brand{
-    position:fixed;
-    left:-5vw;
-    top:110vh;
+    position: fixed;
 
-    writing-mode:vertical-rl;
+    left: -3vw;
+    top: 110vh;
 
-    font-size:18vw;
-    font-weight:900;
-    color:#33a8c8;
+    writing-mode: vertical-rl;
+    text-orientation: mixed;
 
-    letter-spacing:.15em;
+    font-size: min(18vw,180px);
+    font-weight: 900;
+
+    color:#2da9c8;
+    opacity:.2;
+
     line-height:1;
+    letter-spacing:.08em;
 
-    opacity:.18;
+    white-space: nowrap;
 
     user-select:none;
     pointer-events:none;
 
-    transition:transform .05s linear;
-}
+    transform:translateY(0);
+}<div class="brand" id="brand">
+安全性第1　むじなグループ
+</div>const brand = document.getElementById("brand");
 
-/* メイン画像 */
-.main-image{
-    position:fixed;
-    right:8vw;
-    top:50%;
-    transform:translateY(-50%);
-    width:min(34vw,430px);
+window.addEventListener("scroll", () => {
+    const max = document.body.scrollHeight - innerHeight;
+    const p = scrollY / max;
 
-    border-radius:20px;
-    overflow:hidden;
+    const y = 110 - 220 * p;
 
-    box-shadow:0 30px 60px rgba(0,0,0,.25);
-}
-
-.main-image img{
-    width:100%;
-    display:block;
-}
-</style>
-</head>
-
-<body>
-
-<div class="bg"></div>
-<div class="overlay"></div>
-
-<div class="brand" id="brand">
-安全性第1
-むじなグループ
-</div>
-
-<div class="main-image" id="image">
-<img src="logo.png">
-</div>
-
-<script>
-
-const brand=document.getElementById("brand");
-const image=document.getElementById("image");
-
-window.addEventListener("scroll",()=>{
-
-const max=document.body.scrollHeight-innerHeight;
-const p=scrollY/max;
-
-//縦文字
-const y=110-220*p;
-brand.style.transform=`translateY(${y}vh)`;
-
-//画像
-image.style.transform=
-`translateY(calc(-50% + ${p*80}px))`;
-
+    brand.style.transform = `translateY(${y}vh)`;
 });
-
-</script>
-
-</body>
-</html>
