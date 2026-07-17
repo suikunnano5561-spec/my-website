@@ -2,65 +2,77 @@
 <html lang="ja">
 <head>
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>むじなグループ</title>
 
 <style>
+
 body{
     margin:0;
-   
+    min-height:500vh;
     overflow-x:hidden;
 
     background:linear-gradient(
-    180deg,
-    #eefcff,
-    #d8f3fb,
-    #b7e1ec
+        180deg,
+        #eefcff 0%,
+        #d8f3fb 50%,
+        #b7e1ec 100%
     );
 }
 
 .marquee{
     position:absolute;
-    left:20px;
-    top:0;
-    width:100%;min-height:500vh;
-    height:300vh;
+    inset:0;
     pointer-events:none;
 }
 
 .text{
     position:absolute;
 
+    left:20px;
+
     writing-mode:vertical-rl;
     white-space:nowrap;
 
-    font-size:18vw;
+    font-size:15vw;
     font-weight:700;
 
-    color:#4dbcd1;
+    color:rgba(77,188,209,.85);
 
-    animation:up 20s linear infinite;
+    text-shadow:0 0 20px rgba(255,255,255,.5);
+
+    animation:up 28s linear infinite;
 }
 
+/* 1本目 */
 .text:nth-child(1){
-    left:0;
     top:100vh;
 }
 
+/* 2本目 */
 .text:nth-child(2){
-    left:0;
-    top:380vh;
+    top:280vh;
+}
+
+/* 3本目 */
+.text:nth-child(3){
+    top:460vh;
 }
 
 @keyframes up{
     from{
         transform:translateY(0);
     }
+
     to{
-        transform:translateY(-220vh);
+        transform:translateY(-520vh);
     }
 }
+
 </style>
 </head>
+
 <body>
 
 <div class="marquee">
@@ -73,9 +85,11 @@ body{
         安全性第1むじなグループ
     </div>
 
-</div>
+    <div class="text">
+        安全性第1むじなグループ
+    </div>
 
-<div style="height:300vh;"></div>
+</div>
 
 </body>
 </html>
