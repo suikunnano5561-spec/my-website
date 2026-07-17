@@ -1,36 +1,64 @@
-.brand{
-    position: fixed;
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
 
-    left: -3vw;
-    top: 110vh;
+<style>
+body{
+    margin:0;
+    overflow:hidden;
+    height:100vh;
 
-    writing-mode: vertical-rl;
-    text-orientation: mixed;
+    background:linear-gradient(
+    180deg,
+    #eefcff 0%,
+    #d7f3fa 50%,
+    #b7e1ec 100%);
+}
 
-    font-size: min(18vw,180px);
-    font-weight: 900;
+.text{
 
-    color:#2da9c8;
-    opacity:.2;
+    position:absolute;
 
-    line-height:1;
-    letter-spacing:.08em;
+    left:20px;
 
-    white-space: nowrap;
+    bottom:-120vh;
 
-    user-select:none;
-    pointer-events:none;
+    writing-mode:vertical-rl;
 
-    transform:translateY(0);
-}<div class="brand" id="brand">
-安全性第1　むじなグループ
-</div>const brand = document.getElementById("brand");
+    white-space:nowrap;
 
-window.addEventListener("scroll", () => {
-    const max = document.body.scrollHeight - innerHeight;
-    const p = scrollY / max;
+    font-size:22vw;
 
-    const y = 110 - 220 * p;
+    font-weight:700;
 
-    brand.style.transform = `translateY(${y}vh)`;
-});
+    color:#49b8cf;
+
+    letter-spacing:0.04em;
+
+    animation:floatUp 20s linear infinite;
+}
+
+@keyframes floatUp{
+
+    from{
+        transform:translateY(0);
+    }
+
+    to{
+        transform:translateY(-240vh);
+    }
+
+}
+</style>
+</head>
+
+<body>
+
+<div class="text">
+    安全性第1むじなグループ
+</div>
+
+</body>
+</html>
