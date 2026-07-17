@@ -7,58 +7,75 @@
 <style>
 body{
     margin:0;
-    overflow:hidden;
-    height:100vh;
+    min-height:300vh;
+    overflow-x:hidden;
 
     background:linear-gradient(
     180deg,
-    #eefcff 0%,
-    #d7f3fa 50%,
-    #b7e1ec 100%);
+    #eefcff,
+    #d8f3fb,
+    #b7e1ec
+    );
+}
+
+.marquee{
+    position:absolute;
+    left:20px;
+    top:0;
+    width:100%;
+    height:300vh;
+    pointer-events:none;
 }
 
 .text{
-
     position:absolute;
 
-    left:20px;
-
-    bottom:-120vh;
-
     writing-mode:vertical-rl;
-
     white-space:nowrap;
 
-    font-size:22vw;
-
+    font-size:18vw;
     font-weight:700;
 
-    color:#49b8cf;
+    color:#4dbcd1;
 
-    letter-spacing:0.04em;
-
-    animation:floatUp 20s linear infinite;
+    animation:up 20s linear infinite;
 }
 
-@keyframes floatUp{
+.text:nth-child(1){
+    left:0;
+    top:100vh;
+}
 
+.text:nth-child(2){
+    left:0;
+    top:220vh;
+}
+
+@keyframes up{
     from{
         transform:translateY(0);
     }
-
     to{
-        transform:translateY(-240vh);
+        transform:translateY(-220vh);
     }
-
 }
 </style>
 </head>
-
 <body>
 
-<div class="text">
-    安全性第1むじなグループ
+<div class="marquee">
+
+    <div class="text">
+        安全性第1むじなグループ
+    </div>
+
+    <div class="text">
+        安全性第1むじなグループ
+    </div>
+
 </div>
+
+<div style="height:300vh;"></div>
 
 </body>
 </html>
