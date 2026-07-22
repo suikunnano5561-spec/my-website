@@ -17,6 +17,7 @@
 body{
     min-height:500vh;
     overflow-x:hidden;
+    font-family:sans-serif;
 }
 
 /* 背景動画 */
@@ -30,62 +31,69 @@ body{
 
     object-fit:cover;
 
-    z-index:-2;
+    z-index:-3;
 }
 
-/* 薄い水色フィルター */
+/* 水色フィルター */
 .overlay{
     position:fixed;
     inset:0;
 
-    background:rgba(180,230,240,0.18);
+    background:rgba(160,220,235,0.15);
 
-    z-index:-1;
+    z-index:-2;
 }
 
-/* 流れる文字エリア */
+/* 流れるエリア */
 .marquee{
     position:absolute;
-    inset:0;
+    top:0;
+    left:0;
+
+    width:100%;
+    height:500vh;
+
     pointer-events:none;
 }
 
 .text{
+
     position:absolute;
 
-    left:15px;
+    left:12px;
 
     writing-mode:vertical-rl;
 
     white-space:nowrap;
 
-    font-size:15vw;
+    font-size:14vw;
 
     font-weight:700;
 
-    color:rgba(255,255,255,0.9);
+    color:rgba(255,255,255,0.92);
 
     text-shadow:
-        0 0 20px rgba(0,0,0,0.25),
-        0 0 40px rgba(255,255,255,0.3);
+        0 0 10px rgba(0,0,0,.25),
+        0 0 40px rgba(255,255,255,.4);
 
-    animation:up 28s linear infinite;
+    animation:floatUp 26s linear infinite;
 }
 
+/* 3本配置 */
 .text:nth-child(1){
     top:100vh;
 }
 
 .text:nth-child(2){
-    top:280vh;
+    top:260vh;
 }
 
 .text:nth-child(3){
-    top:460vh;
+    top:420vh;
 }
 
 /* 上へ流れる */
-@keyframes up{
+@keyframes floatUp{
 
     from{
         transform:translateY(0);
