@@ -103,7 +103,37 @@
     color: #fff;
   }
 
-  /* セクションタイトル */
+  /* 安全宣言セクション */
+  .safety-section {
+    padding: 60px 20px;
+    text-align: center;
+    background: #111;
+    border-bottom: 1px solid #333;
+  }
+
+  .safety-section h2 {
+    color: #f5d479;
+    font-size: 24px;
+    letter-spacing: 0.1em;
+    margin-bottom: 20px;
+  }
+
+  .safety-section p {
+    max-width: 720px;
+    margin: 0 auto 30px;
+    font-size: 15px;
+    color: #ccc;
+    line-height: 1.8;
+  }
+
+  .safety-section img {
+    width: 100%;
+    max-width: 700px;
+    border-radius: 12px;
+    border: 1px solid #333;
+  }
+
+  /* 商品一覧タイトル */
   .section-title {
     text-align: center;
     font-size: 22px;
@@ -166,7 +196,7 @@
     font-weight: 700;
   }
 
-  /* 在庫一覧ボタン（商品一覧の下） */
+  /* 在庫一覧ボタン */
   .stock-btn {
     display: block;
     width: 260px;
@@ -238,11 +268,22 @@
   </div>
 </section>
 
+<!-- ★ 安全宣言セクション -->
+<section class="safety-section">
+  <h2>安全第一の取引をお約束します</h2>
+  <p>
+    むじなグループでは、荒野行動アカウントの販売・買取において<br>
+    <strong style="color:#f5d479;">詐欺ゼロ・トラブルゼロ</strong> を継続しています。<br><br>
+    本人確認・情報確認・取引記録の保存を徹底し、<br>
+    安心してご利用いただける環境を提供しています。
+  </p>
+  <img src="画像" alt="安全イメージ">
+</section>
+
 <h2 class="section-title" id="products">商品一覧</h2>
 
 <div class="products">
 
-  <!-- 商品カード 1 -->
   <div class="product-card">
     <img src="画像">
     <div class="product-body">
@@ -253,7 +294,6 @@
     </div>
   </div>
 
-  <!-- 商品カード 2 -->
   <div class="product-card">
     <img src="画像">
     <div class="product-body">
@@ -264,7 +304,6 @@
     </div>
   </div>
 
-  <!-- 商品カード 3 -->
   <div class="product-card">
     <img src="画像">
     <div class="product-body">
@@ -277,10 +316,8 @@
 
 </div>
 
-<!-- 在庫一覧ボタン -->
 <a href="https://muzinagroup.my.canva.site/stock" class="stock-btn">在庫一覧を見る</a>
 
-<!-- お問い合わせ -->
 <div class="cta" id="contact">
   <div class="cta-inner">
     <h3>お問い合わせ</h3>
