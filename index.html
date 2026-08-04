@@ -126,7 +126,13 @@
     line-height: 1.8;
   }
 
-  .safety-section img {
+  /* 安全イメージ（タイトル＋画像） */
+  .safety-image-box {
+    text-align: center;
+    margin: 40px 0;
+  }
+
+  .safety-image-box img {
     width: 100%;
     max-width: 700px;
     border-radius: 12px;
@@ -292,8 +298,15 @@
     お客様が安心して取引できる環境を維持しています。
   </p>
 
-  <!-- ★ safety.jpg に変更済み -->
-  <img src="safety.jpg" alt="安全イメージ">
+  <!-- ★ 安全イメージ（タイトル＋画像） -->
+  <div class="safety-image-box">
+    <h3 style="color:#f5d479; font-size:20px; margin-bottom:16px;">
+      安全イメージ
+    </h3>
+
+    <img src="safety.jpg" alt="安全イメージ">
+  </div>
+
 </section>
 
 <!-- おすすめ商品（横スクロール） -->
